@@ -1,0 +1,40 @@
+1 Số kinh nghiệm thiết kế database
+	1. Đặt tên cho bảng 
+		Tên bảng cần dễ hiểu và đoán được mục đích lưu trữ của bảng, đồng thời sử dụng kí chữ hoa ở đầu tên
+		Ví dụ : AdReport, CampaignGroupReport , chúng ta không nên đặt adreport,campaigngroupreport hoặc report
+	2. Đặt tên số ít
+		Chúng ta nên đặt tên số ít ví dụ : CampaignGroupReport, không cần thiết phải đặt tên CampaignGroupReports
+	3. Không sử dụng dấu cách trong tên bảng
+		Ví dụ : nên sử dụng CampaignGroupReport thay vì [Campaign Group Report]
+	4. Sử dụng tên bảng gắn với ID là tên của trường Primary Key nếu có thế
+		Ví dụ : CampaignGroupReportID
+	5. Sử dụng kiểu Boolean để lưu giá trị yes/no và tên trường bắt đầu bằng Is
+		Ví dụ : IsEnabled
+	6. Add trường Audit để có thể biết rằng ai tạo thêm row và khi nào, ai sửa row và khi nào
+	7. Sử dụng indexes để tăng tốc độ queries, với việc sử dụng Profile Analyser
+	8. Sử dụng nvarchar để đảm bảo tất cả các ngôn ngữ được hỗ trợ
+	9. Sử dụng varchar(max) khi thực sự cần thiết và nên tránh sử dụng ntext
+	10.Chia nhỏ bảng nếu có thể để tăng tính linh động và mềm dẻo
+		Việc làm này sẽ :
+		+ Giảm dung lượng lưu trữ, vì khách hành có thể sẽ không bao giờ điền hết 5 trường Payment01,Payment02,..Payment05 
+		nếu sử dụng bảng ban đầu ta phải lưu rất nhiều dữ liệu NULL
+		+ Làm tăng tính mềm dẻo của hệ thống, nếu sau này hệ thống có thể có thêm nhiều hình thức thanh toán khác, 
+		thì cũng không cần phải sửa lại bảng để thêm trường mới
+
+2 Những sai lầm trong thiết kế cơ sở dữ liệu
+	1. Bỏ qua mục đích của dữ liệu
+	2. Chuẩn hóa yếu (3NF, 2NF hay thậm chí 1NF)
+	3. Sự dư thừa
+	4. Ràng buộc yếu
+	5. Không tận dụng những tính năng của DB Engine
+	6. Khóa chính kết hợp
+	7. Chỉ mục yếu
+	8. Quy tắc đặt tên không tốt
+		Không giới hạn kích cỡ tên bảng/cột. Một cách tên ý nghĩa sẽ dễ hiểu và dễ nhớ hơn tên viết tắt.
+		Tên giống nhau có cùng một ý nghĩa. Tránh đặt tên cho các trường giống nhau với những kiểu dữ liệu hoặc ý nghĩa khác nhau.
+		Nếu không cần thiết, loại bỏ sự dừ thừa. Ví dụ trong bảng Item, thay vì ItemName, PriceOfItem, hoặc tương tự thì Name và Price là đủ.
+		Tránh những từ khóa mặc định của DBE. Nếu một cột được gọi là Index, một từ khóa của SQL, thì cố gắng sử dụng một cái tên khác như IndexNumber.
+		Nếu sử dụng khóa chính là cột số nguyên được sinh tự động, đặt tên cho nó là Id ở mọi bảng.
+		Định nghĩa khóa ngoài khi nối bảng: thêm Id đằng trước tên bảng. Ví dụ IdItem
+		Nếu đặt tên cho ràng buồng thì sử dụng tiền tố mô tả ràng buộc (vd: PK hoặc FK), theo sau là tên của bảng hoặc bảng liên quan. Dĩ nhiên, việc sử dụng gạch dưới _ phần nào đó khiến mọi thứ trở nên dễ đọc hơn.
+		Để đặt tên cho chỉ mục, sử dụng tiền tố IDX đằng trước tên bảng và tên cột hoặc cột của chỉ mục. Đồng thời sử dụng UNIQUE làm tiền tố hoặc hậu tố nếu chỉ mục là duy nhất và sử dụng gạch dưới nếu cần thiết
