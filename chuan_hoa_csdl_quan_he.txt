@@ -1,0 +1,24 @@
+Chuẩn hóa cơ sở dữ liệu quan hệ
+	Mục đích của chuẩn hóa cơ sở dữ liệu
+		1. Giảm thiểu dư thừa dữ liệu
+		2. Loại bỏ các bất thường khi cập nhật cơ sở dữ liệu
+	Các kiểu chuẩn hóa cơ sở dữ liệu
+		First Normal Form (1NF): dạng chuẩn 1NF
+		Second Normal Form (2NF): dạng chuẩn 2NF
+		Third Nomal Form (3NF): dạng chuẩn 3NF
+		Boyce-Codd Normal Form (BCNF): dạng chuẩn Boyce-Codd
+	Dạng chuẩn 1NF
+		Các thuộc tính của bảng phải là nguyên tố
+		Giá trị của các thuộc tính trên các hàng phải là đơn trị, không chứa nhóm lặp
+		Không có một thuộc tính nào có giá trị có thể tính toán được từ một thuộc tính khác
+	Dạng chuẩn 2NF
+		Bước 1: Loại bỏ các thuộc tính không khóa phụ thuộc vào một bộ phận khóa chính và tách ra thành một bảng riêng, 
+		khóa chính của bảng là bộ phận của khóa mà chúng phụ thuộc vào.
+		Bước 2: Các thuộc tính còn lại lập thành một quan hệ, khóa chính của nó là khóa chính ban đầu.
+	Dạng chuẩn 3NF
+		Phải đạt chuẩn 2NF
+		Mọi thuộc tính không khóa phụ thuộc bắc cầu vào thuộc tính khóa 
+		(nghĩa là tất cả các thuộc tính không khóa phải được suy ra trực tiếp từ thuộc tính khóa)
+	Dạng chuẩn Boyce-Codd
+		Phải đạt chuẩn 3NF
+		Không có thuộc tính khóa nào phụ thuộc vào thuộc tính không khóa
